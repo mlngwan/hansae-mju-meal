@@ -1,0 +1,936 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+<!DOCTYPE HTML>
+<!--[if lt IE 7 ]><html dir="ltr" lang="ko" class="no-js ie ie6 lte7 lte8 lte9"><![endif]-->
+<!--[if IE 7 ]><html dir="ltr" lang="ko" class="no-js ie ie7 lte7 lte8 lte9"><![endif]--> 
+<!--[if IE 8 ]><html dir="ltr" lang="ko" class="no-js ie ie8 lte8 lte9"><![endif]-->
+<!--[if IE 9 ]><html dir="ltr" lang="ko" class="no-js ie ie9 lte9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html dir="ltr" lang="ko" class="no-js"><!--<![endif]-->
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			K2Web Wizard
+			
+		</title>
+		<meta property="og:url" content="http://www.k2web.co.kr/">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="K2WebWizard">
+		<meta property="og:description" content="누구나 인터넷으로부터 자유롭기를 희망하며">
+		<meta name="generator" content="K2Web Wizard"> 
+
+ 
+		
+		
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+	
+	
+
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta id="resResponsiveViewport" name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1, user-scalable=yes">
+
+	<meta name="apple-mobile-web-app-title" content="">
+	
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta property="og:title" content="">
+	<meta property="og:site_name" content="">
+	<meta property="og:url" content="?">
+	<meta property="og:image" content="">
+	<meta property="og:description" content="">
+	
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="">
+	<meta name="twitter:url" content="?">
+	<meta name="twitter:image" content="">
+	<meta name="twitter:description" content="">
+
+<meta name="generator" content="K2Web Wizard"> 
+
+
+ 
+
+	<script src="/Web-home/js/jquery-1.9.1.min.js"></script>
+	<script src="/Web-home/js/jquery-migrate-1.2.1.js"></script>
+	<script src="/Web-home/js/jquery-ui-1.11.0.js"></script>
+	<script src="/Web-home/plugin/simplemodal/js/jquery.simplemodal-1.4.4.js"></script>
+	
+	<script src="/Web-home/js/jquery.blockUI.js"></script>
+	<script>
+		var urlPattern = ".do";
+		var defaultTextSiteId = "mjukr";
+	</script>
+	<script src="/Web-home/js/common.js"></script>
+	
+	<script src="/Web-home/_UI/js/_lib/modernizr.min.js"></script>
+	<script src="/Web-home/_UI/js/_lib/jquery.mCustomScrollbar.js"></script>
+	<script src="/Web-home/_UI/js/_lib/jquery.jshowoff.js"></script>
+	<script src="/Web-home/_UI/js/_lib/jquery.bxslider.js"></script>
+	
+	
+	<link rel="stylesheet" href="/Web-home/_UI/css/common/mCustomScrollbar.css">
+	
+	
+	
+	<script src="/Web-home/_SITES/js/common/common.js"></script>
+	<script src="/Web-home/fnct/site/user/js/site_user.js"></script>
+	
+	<link rel="stylesheet" href="/Web-home/_UI/css/common/blockUI.css">
+	<link rel="stylesheet" href="/Web-home/_UI/css/common/normalize.css">
+	<link rel="stylesheet" href="/Web-home/_SITES/css/common/common.css">
+	<link rel="stylesheet" href="/Web-home/_SITES/css/content/content.css">
+	<link rel="stylesheet" href="/Web-home/_UI/css/lang/common_ko.css">
+			
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+
+	
+		
+		
+			<link rel="stylesheet" href="/Web-home/content/skin/skin0/style.css">
+		
+	
+	
+	
+	
+	<link rel="stylesheet" href="/Web-home/_UI/css/guide/responsive.css">
+	
+		
+		
+		
+		
+			<!-- ONLY PC -->
+			<link href="/Web-home/_UI/css/guide/responsiveDesktop.css?v=79201570" rel="stylesheet">
+		
+	
+	
+	
+	 
+	
+	
+	
+	
+	
+		
+		
+		
+		
+			<!-- ONLY PC -->
+			<link href="/sites/mjukr/style/css/site_contents_Desktop.css?v=79201570" rel="stylesheet">
+		
+	
+	
+	
+	
+	<link rel="stylesheet" href="/Web-home/_SITES/css/fnct/fnct.css?v=79201570">
+	
+		
+		
+		
+		
+			<!-- ONLY PC -->
+			<link href="/Web-home/_SITES/css/fnct/fnctDesktop.css?v=79201570" rel="stylesheet">
+		
+	
+	
+	
+		
+		
+		
+	
+	
+	<script>
+	$(function() {
+		if( typeof(window["adjustStyle"]) == "function" ){
+			adjustStyle($(this).width());
+			
+			$(window).resize(function() {
+				adjustStyle($(this).width());
+			});
+		}else{
+			$("._responsiveObj").addClass("Desktop");
+		}
+	});
+	</script>
+	
+	
+	
+		
+		
+			<!-- sub,popup,etc -->
+		
+	
+	
+	<!-- [M/S RESOURCE] -->
+	
+	<!-- [FNCT RESOURCE] -->
+	
+	<!-- [END] -->
+	
+	
+	
+		
+		
+			
+		
+	
+	
+	<!-- [SITES:S] -->
+	
+	
+	
+	<link href="/sites/mjukr/style_edit/css/style.css?v=79201570" rel="stylesheet">
+
+	
+		
+		
+		
+		
+			<!-- ONLY PC -->
+			<link href="/sites/mjukr/style_edit/css/style_common_Desktop.css?v=79201570" rel="stylesheet">
+		
+	  
+	
+	
+	
+	
+	 
+	
+	
+	
+	<script src="/sites/mjukr/style_edit/js/script.js"></script>
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--[if lt IE 9]>
+
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+	<script src="//oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+
+<![endif]-->
+
+		
+		<style>
+		._fnctWrap{
+			overflow: hidden;
+			/*margin: 50px;*/
+		}
+		#divLoadBody {
+			display: none; 
+		}
+		</style>
+		
+
+		
+	
+<link type="text/css" rel="stylesheet" href="/Web-home/fnct/diet/JW_diet_mju/css/style.css" />
+
+<script>
+$(document).ready(function() {
+	// cell merge
+	mergeCell("listTable");
+});
+
+// cell merge
+function mergeCell(tableId) {
+	// variable 정의
+	var first = true;
+	var prevRowspan1 = 1;
+	var prevCell1 = null;
+	var prevRowspan2 = 1;
+	var prevCell2 = null;
+	// tr 모두 추출
+	var rows = $("#" + tableId + " > tbody").children();
+	for (var i = 0; i < rows.length; i++ ) {
+		// first row
+		if (first) {
+			prevRow = rows[i];
+			prevCell1 = $(prevRow).find("th").eq(0); // 기간
+			prevCell2 = $(prevRow).find("td").eq(0); // 식단
+			first = false;
+			continue;
+		}
+		var row = rows[i]; // row
+		var tdList = $(row).find("td"); // row > td 리스트
+		var thList = $(row).find("th"); // row > th 리스트
+		var firstCell = $(thList).eq(0); // 첫 번째 행
+		var secondCell = $(tdList).eq(0); // 두 번째 행
+		var firstCellText = $(firstCell).text(); // 첫 번째 행 text 추출
+		var secondCellText = $(secondCell).text() // 두 번째 행 text 추출
+		// 두 번째 row 부터 텍스트 비교
+		if (prevCell1.text() == firstCellText) {
+			if (prevCell2.text() == secondCellText) { // 식단 값 비교
+				prevRowspan2++; // 중복되는 값이 있으므로 rowspan +1
+				$(prevCell2).attr("rowspan", prevRowspan2); // 첫 번째 row의 두 번째 cell에 rowspan 추가 (성별)
+				$(secondCell).remove(); // 중복 cell element 삭제
+			} else {
+				prevRowspan2 = 1;
+				prevCell2 = secondCell;
+			}
+			prevRowspan1++;
+			$(prevCell1).attr("rowspan", prevRowspan1);
+			$(firstCell).remove();
+		}
+		else {
+			prevRowspan1 = 1;
+			prevRowspan2 = 1;
+			prevCell1 = firstCell;
+			prevCell2 = secondCell;
+		}
+	}
+} 
+	  
+	function goWeek(gubun){
+		$("#week").val(gubun);
+		$("#viewForm").submit();
+	}
+</script>
+
+	
+
+    		<!--<script>
+    		/*function loaded(){  
+    			var element = document.getElementById('loading'); // 로딩 요소 
+    			element.parentNode.removeChild(element); // 요소 제거 
+   			} 
+   			// 로딩 이벤트에 등록 
+   			if(window.addEventListener){  
+   			      window.addEventListener('load', loaded, false);      
+   			    }else{
+   			      window.attachEvent('onload', loaded); 
+   			}
+   			 $(window).load(function(){
+   				  $('#loading').fadeOut(2000);
+			}); */
+			</script>
+			 <style>
+				#loading {
+					background: url("/Web-home/_UI/images/guide/loading.gif") no-repeat 50% 50% #fff;
+					position: fixed;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					z-index: 9999;
+					text-indent: -5000px;
+				}
+			</style> -->
+ </head>
+<body class="_responsiveObj _langko">
+
+<!-- <div id="loading">
+L o a d i n g . . .    
+</div> -->
+
+	
+
+
+
+<div id="_JW_diet_basic" class="_fnctWrap">
+	
+	<div class="inner">
+		<div class="scedule">
+			<div class="sceduleBox">
+				<p class="title">자연캠퍼스 교직원식당</p>
+				<div class="control">
+					<a href="javascript:;" onclick="javascript:goWeek('pre');" class="prev">이전</a>
+					<p class="date">11.10 ~ 11.16</p>
+					<a href="javascript:;" onclick="javascript:goWeek('next');" class="next">다음</a>
+				</div>
+			</div>
+		</div>
+		<div class="info">
+			<ul>
+				<li>
+					<dl>
+						<dt>운영시간</dt>
+						<dd>(중식) 11:30 ~ 13:30,  (석식) 17:30 ~ 18:30</dd>
+					</dl>
+				</li>
+				<li>
+					<dl>
+						<dt>식당위치</dt>
+						<dd>방목기념관</dd>
+					</dl>
+				</li>
+			</ul>
+		</div>
+
+	<form name="viewForm" id="viewForm" method="post" action="/diet/mjukr/7/view.do">
+		<input type="hidden" name="layout" value="">
+		<input type="hidden" name="monday" value="2025.11.10">
+		<input type="hidden" id="week" name="week">
+		<div class="tableWrap marT50">
+			<table summary="일주일간의 식단을 요일, 식단구분, 식단제목, 식단내용, 기타정보에 따라 안내합니다.">
+			<caption>일주일간 식단 안내</caption>
+				<colgroup>            
+					<col class="dDate" style="width:100px;">
+					<col class="dSep" style="width:180px;">
+					<col class="dTitle" style="width:150px;">
+					<col class="dContent" style="width:350px;">            
+					<col class="dInfor" style="width:150px;">
+				</colgroup>
+				
+				<thead>
+					<tr>
+						<th scope="col">요일</th>
+						<th scope="col">식단구분</th>
+						<th scope="col">식단제목</th>
+						<th scope="col">식단내용</th>
+						<th scope="col">기타정보</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					
+						
+						
+						
+						 
+							
+							
+								
+								
+									
+								
+							
+						 
+							
+							
+								
+								
+									
+								
+							
+						
+						
+						
+							
+							
+							
+							
+								
+									
+										<tr>
+											
+												
+												<th rowspan="2">11.10  (월)</th>
+											
+											
+												
+												<td rowspan="1">점심</td>
+											
+											
+											
+											<td>-</td>
+											
+											<td class="alignL">돼지고기김치찌개<br/>잡곡밥/백미밥<br/>고기산적야채조림<br/>치커리생채<br/>도시락김<br/>깍두기<br/>샐러드&드레싱(2종)<br/>요구르트<br/></td>
+											
+											<td>
+												
+													
+														-
+													
+													
+												
+											</td>
+										</tr>
+									
+								
+								
+							
+						
+							
+							
+							
+							
+								
+									
+										<tr>
+											
+											
+												
+												<td rowspan="1">저녁</td>
+											
+											
+											
+											<td>-</td>
+											
+											<td class="alignL">카레라이스<br/>팽이된장국<br/>야채튀김&김말이<br/>푸실리범벅<br/>고들빼기지<br/>배추김치<br/>샐러드&드레싱(2종)<br/>요구르트<br/></td>
+											
+											<td>
+												
+													
+														-
+													
+													
+												
+											</td>
+										</tr>
+									
+								
+								
+							
+						
+					
+						
+						
+						
+						 
+							
+							
+								
+								
+									
+								
+							
+						 
+							
+							
+								
+								
+									
+								
+							
+						
+						
+						
+							
+							
+							
+							
+								
+									
+										<tr>
+											
+												
+												<th rowspan="2">11.11  (화)</th>
+											
+											
+												
+												<td rowspan="1">점심</td>
+											
+											
+											
+											<td>-</td>
+											
+											<td class="alignL">육개장<br/>잡곡밥/백미밥<br/>동그랑땡&케찹<br/>도토리묵&양념장<br/>청경채무침<br/>깍두기<br/>샐러드&드레싱(2종)<br/>요구르트<br/></td>
+											
+											<td>
+												
+													
+														-
+													
+													
+												
+											</td>
+										</tr>
+									
+								
+								
+							
+						
+							
+							
+							
+							
+								
+									
+										<tr>
+											
+											
+												
+												<td rowspan="1">저녁</td>
+											
+											
+											
+											<td>-</td>
+											
+											<td class="alignL">햄김치볶음밥<br/>계란파국<br/>가라아게&머스타드<br/>미니새송이볶음<br/>궁채절임<br/>깍두기<br/>샐러드&드레싱(2종)<br/>요구르트<br/></td>
+											
+											<td>
+												
+													
+														-
+													
+													
+												
+											</td>
+										</tr>
+									
+								
+								
+							
+						
+					
+						
+						
+						
+						 
+							
+							
+								
+								
+									
+								
+							
+						 
+							
+							
+								
+								
+									
+								
+							
+						
+						
+						
+							
+							
+							
+							
+								
+									
+										<tr>
+											
+												
+												<th rowspan="2">11.12  (수)</th>
+											
+											
+												
+												<td rowspan="1">점심</td>
+											
+											
+											
+											<td>-</td>
+											
+											<td class="alignL">짬뽕순두부찌개<br/>잡곡밥/백미밥<br/>생선까스&타르타르<br/>검정콩자반<br/>브로콜리숙회<br/>배추김치<br/>샐러드&드레싱(2종)<br/>요구르트<br/></td>
+											
+											<td>
+												
+													
+														-
+													
+													
+												
+											</td>
+										</tr>
+									
+								
+								
+							
+						
+							
+							
+							
+							
+								
+									
+										<tr>
+											
+											
+												
+												<td rowspan="1">저녁</td>
+											
+											
+											
+											<td>-</td>
+											
+											<td class="alignL">닭갈비<br/>백미밥<br/>시금치된장국<br/>볼어묵볶음<br/>쌈무<br/>배추김치<br/>샐러드&드레싱(2종)<br/>요구르트<br/></td>
+											
+											<td>
+												
+													
+														-
+													
+													
+												
+											</td>
+										</tr>
+									
+								
+								
+							
+						
+					
+						
+						
+						
+						 
+							
+							
+								
+								
+									
+								
+							
+						 
+							
+							
+								
+								
+									
+								
+							
+						
+						
+						
+							
+							
+							
+							
+								
+									
+										<tr>
+											
+												
+												<th rowspan="2">11.13  (목)</th>
+											
+											
+												
+												<td rowspan="1">점심</td>
+											
+											
+											
+											<td>-</td>
+											
+											<td class="alignL">돈까스&데미S<br/>잡곡밥/백미밥<br/>조랭이떡국<br/>맛살겨자냉채<br/>마늘종&알마늘지<br/>배추김치<br/>샐러드&드레싱(2종)<br/>요구르트<br/></td>
+											
+											<td>
+												
+													
+														-
+													
+													
+												
+											</td>
+										</tr>
+									
+								
+								
+							
+						
+							
+							
+							
+							
+								
+									
+										<tr>
+											
+											
+												
+												<td rowspan="1">저녁</td>
+											
+											
+											
+											<td>-</td>
+											
+											<td class="alignL">쑥갓유부우동<br/>백미밥<br/>야채춘권<br/>소시지떡조림<br/>부추양파무침<br/>배추김치<br/>샐러드&드레싱(2종)<br/>요구르트<br/></td>
+											
+											<td>
+												
+													
+														-
+													
+													
+												
+											</td>
+										</tr>
+									
+								
+								
+							
+						
+					
+						
+						
+						
+						 
+							
+							
+								
+								
+									
+								
+							
+						 
+							
+							
+								
+								
+									
+								
+							
+						
+						
+						
+							
+							
+							
+							
+								
+									
+										<tr>
+											
+												
+												<th rowspan="2">11.14  (금)</th>
+											
+											
+												
+												<td rowspan="1">점심</td>
+											
+											
+											
+											<td>-</td>
+											
+											<td class="alignL">얼큰만두탕<br/>잡곡밥/백미밥<br/>한입떡갈비<br/>미역줄기볶음<br/>미나리무생채<br/>깍두기<br/>샐러드&드레싱(2종)<br/>요구르트<br/></td>
+											
+											<td>
+												
+													
+														-
+													
+													
+												
+											</td>
+										</tr>
+									
+								
+								
+							
+						
+							
+							
+							
+							
+								
+									
+										<tr>
+											
+											
+												
+												<td rowspan="1">저녁</td>
+											
+											
+											
+											<td>-</td>
+											
+											<td class="alignL">청양풍돈불고기<br/>백미밥<br/>미역국<br/>천사채야채무침<br/>콩나물무침<br/>배추김치<br/>샐러드&드레싱(2종)<br/>요구르트<br/></td>
+											
+											<td>
+												
+													
+														-
+													
+													
+												
+											</td>
+										</tr>
+									
+								
+								
+							
+						
+					
+				</tbody>
+			</table>
+		</div>
+	</form>
+
+	</div>
+</div>
+
+
+
+
+
+
+</body>
+</html>
+
+

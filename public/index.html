@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>명지대 자연캠 교직원식당 식단</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <style>
+
+:root {
+  --mju-blue: #005a9c;
+  --mju-blue-light: #e3f2fd;
+  --card-radius: 10px;
+}
+
+/* Reset-ish */
+* { box-sizing: border-box; }
+
+body { 
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+               "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  max-width: 1000px; 
+  margin: 0 auto; 
+  padding: 16px; 
+  background: #f0f2f5; 
+  color: #333;
+}
+
+h1 { 
+  font-size: 2.0rem; 
+  color: #2c3e50; 
+  margin-bottom: 0.5rem; 
+  text-align: center;
+}
+
+.meta { 
+  color: #7f8c8d; 
+  font-size: 0.9rem; 
+  text-align: center; 
+  margin-bottom: 1.0rem; 
+  line-height: 1.4;
+}
+
+.today-summary {
+  font-size: 0.9rem;
+  margin: 0 auto 1.2rem auto;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  max-width: 600px;
+}
+
+/* 전체 레이아웃: 상단/좌측 요일 탭 + 우측 패널 */
+.week-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 요일 탭 영역 */
+.day-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin-bottom: 10px;  /* 살짝 더 여유 */
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.day-tabs::-webkit-scrollbar {
+  height: 4px;
+}
+.day-tabs::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 999px;
+}
+
+/* 요일 탭 버튼 (크기 줄인 버전) */
+.day-tab {
+  flex: 0 0 auto;
+  border: 1px solid #dde1e7;
+  border-radius: 8px;       /* 살짝 둥근 직사각형 */
+  padding: 4px 8px 6px 8px;
+  background: #ffffff;
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  min-width: 64px;
+  transition: background 0.15s ease, border-color 0.15s ease,
+              transform 0.1s, box-shadow 0.1s;
+  color: #333;
+}
+
+.day-tab:hover {
+  background: #f5f7fb;
+  transform: translateY(-1px);
+}
+
+.day-tab:active {
+  transform: translateY(0);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.day-tab .weekday {
+  font-weight: 600;
+  font-size: 0.80rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #111827;
+}
+
+.day-tab .date {
+  font-size: 0.72rem;
+  color: #6b7280;
+}
+
+/* 오늘 요일 탭 표시 (선택 안 되어 있을 때) */
+.day-tab.is-today {
+  border-color: #ef4444;          /* 빨간 테두리 */
+  background: #fff5f5;
+}
+.day-tab.is-today .weekday {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* 오늘 탭에 은은한 pulse 애니메이션 (선택 안 된 상태일 때만) */
+@keyframes pulse-border {
+  0%   { box-shadow: 0 0 0 0 rgba(239,68,68,0.45); }
+  100% { box-shadow: 0 0 0 7px rgba(239,68,68,0); }
+}
+
+.day-tab.is-today:not(.active) {
+  animation: pulse-border 1.6s infinite;
+}
+
+/* 현재 선택된 요일 탭(누른 상태) */
+.day-tab.active {
+  background: var(--mju-blue);
+  border-color: var(--mju-blue);
+  color: #ffffff;
+}
+.day-tab.active .weekday {
+  background: #ffffff;
+  color: var(--mju-blue);
+}
+.day-tab.active .date {
+  color: #dbeafe;
+}
+
+/* "오늘 + 선택됨"인 경우 → 파란 배경 + 빨간 테두리 */
+.day-tab.is-today.active {
+  border-color: #ef4444;            /* 얇은 빨간 테두리 */
+  box-shadow: 0 0 0 1px #ef4444;    /* 살짝 더 강조 */
+  animation: none;                  /* pulse 중단 */
+}
+
+/* 요일별 패널 영역 */
+.day-panels {
+  margin-top: 12px;   /* 탭 아래 여백 늘림 (윗부분 잘려 보이는 느낌 완화) */
+}
+
+/* 패널 입장 애니메이션 */
+@keyframes fade-slide {
+  0%   { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.day-panel {
+  display: none;
+}
+
+.day-panel.active {
+  display: block;
+  animation: fade-slide 0.28s ease-out;  /* 전환 속도 살짝 느리게 */
+}
+
+.day-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 10px;  /* 헤더 아래도 여유 조금 추가 */
+}
+
+.day-panel-header h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.day-panel-header .sub {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* 끼니 카드 */
+.meal-card {
+  background: #fff;
+  border-radius: var(--card-radius);
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  border: 1px solid #e5e7eb;
+  position: relative;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* 카드 hover 애니메이션 */
+.meal-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+/* 상단 색띠로 점심/저녁 구분 */
+.meal-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  border-radius: var(--card-radius) var(--card-radius) 0 0;
+  background: #e5e7eb;
+}
+.meal-card.lunch::before {
+  background: #facc15;  /* 노랑 (점심) */
+}
+.meal-card.dinner::before {
+  background: #6366f1;  /* 보라 (저녁) */
+}
+
+.meal-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.meal-type {
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.meal-type .emoji {
+  font-size: 1.1rem;
+}
+
+.meal-info {
+  font-size: 0.75rem;
+  color: #999;
+}
+
+/* 메인디쉬 따로 박스 없이, 첫 줄만 살짝 강조 */
+.meal-items {
+  margin: 4px 0 0 0;
+  padding-left: 18px;
+  font-size: 0.9rem;
+}
+
+.meal-items li {
+  margin: 2px 0;
+  color: #333;
+}
+
+.meal-items li:first-child {
+  font-weight: 600;
+  color: #111827;
+}
+
+.no-menu {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+/* 하단 푸터 */
+footer {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: #777;
+  text-align: center;
+}
+
+/* 데스크톱: 좌측 탭 / 우측 내용 2단 */
+@media (min-width: 900px) {
+  .week-layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .day-tabs {
+    flex-direction: column;
+    border-bottom: none;
+    border-right: 1px solid #e0e0e0;
+    padding-right: 8px;
+    margin-right: 8px;
+    max-width: 150px;
+  }
+
+  .day-tab {
+    width: 100%;
+  }
+
+  .day-panels {
+    flex: 1;
+    padding-left: 8px;
+  }
+}
+
+  </style>
+</head>
+<body>
+<h1>🍽️ 교직원 식단 메뉴</h1>
+<p class="meta"><span>11.10 ~ 11.16</span> · 마지막 업데이트: 2025-11-14 16:27 (KST)</p>
+<div id="today-summary" class="today-summary"></div>
+<div class="week-layout">
+<div class="day-tabs" id="day-tabs">
+<button class="day-tab" type="button" data-date="11.10"><span class="weekday">월요일</span><span class="date">11.10</span></button>
+<button class="day-tab" type="button" data-date="11.11"><span class="weekday">화요일</span><span class="date">11.11</span></button>
+<button class="day-tab" type="button" data-date="11.12"><span class="weekday">수요일</span><span class="date">11.12</span></button>
+<button class="day-tab" type="button" data-date="11.13"><span class="weekday">목요일</span><span class="date">11.13</span></button>
+<button class="day-tab" type="button" data-date="11.14"><span class="weekday">금요일</span><span class="date">11.14</span></button>
+</div>
+<div class="day-panels" id="day-panels">
+<section class="day-panel" data-date="11.10">
+<div class="day-panel-header">
+<h2>11.10 월요일</h2>
+<span class="sub">점심 · 저녁 식단</span>
+</div>
+<article class="meal-card lunch" data-date="11.10">
+<div class="meal-card-header">
+<div class="meal-type">
+<span class="emoji">☀️</span>
+<span class="label">점심</span>
+</div>
+</div>
+<ul class="meal-items">
+<li>돼지고기김치찌개</li>
+<li>잡곡밥/백미밥</li>
+<li>고기산적야채조림</li>
+<li>치커리생채</li>
+<li>도시락김</li>
+<li>깍두기</li>
+<li>샐러드&amp;드레싱(2종)</li>
+<li>요구르트</li>
+</ul>
+</article>
+<article class="meal-card dinner" data-date="11.10">
+<div class="meal-card-header">
+<div class="meal-type">
+<span class="emoji">🌙</span>
+<span class="label">저녁</span>
+</div>
+</div>
+<ul class="meal-items">
+<li>카레라이스</li>
+<li>팽이된장국</li>
+<li>야채튀김&amp;김말이</li>
+<li>푸실리범벅</li>
+<li>고들빼기지</li>
+<li>배추김치</li>
+<li>샐러드&amp;드레싱(2종)</li>
+<li>요구르트</li>
+</ul>
+</article>
+</section>
+<section class="day-panel" data-date="11.11">
+<div class="day-panel-header">
+<h2>11.11 화요일</h2>
+<span class="sub">점심 · 저녁 식단</span>
+</div>
+<article class="meal-card lunch" data-date="11.11">
+<div class="meal-card-header">
+<div class="meal-type">
+<span class="emoji">☀️</span>
+<span class="label">점심</span>
+</div>
+</div>
+<ul class="meal-items">
+<li>육개장</li>
+<li>잡곡밥/백미밥</li>
+<li>동그랑땡&amp;케찹</li>
+<li>도토리묵&amp;양념장</li>
+<li>청경채무침</li>
+<li>깍두기</li>
+<li>샐러드&amp;드레싱(2종)</li>
+<li>요구르트</li>
+</ul>
+</article>
+<article class="meal-card dinner" data-date="11.11">
+<div class="meal-card-header">
+<div class="meal-type">
+<span class="emoji">🌙</span>
+<span class="label">저녁</span>
+</div>
+</div>
+<ul class="meal-items">
+<li>햄김치볶음밥</li>
+<li>계란파국</li>
+<li>가라아게&amp;머스타드</li>
+<li>미니새송이볶음</li>
+<li>궁채절임</li>
+<li>깍두기</li>
+<li>샐러드&amp;드레싱(2종)</li>
+<li>요구르트</li>
+</ul>
+</article>
+</section>
+<section class="day-panel" data-date="11.12">
+<div class="day-panel-header">
+<h2>11.12 수요일</h2>
+<span class="sub">점심 · 저녁 식단</span>
+</div>
+<article class="meal-card lunch" data-date="11.12">
+<div class="meal-card-header">
+<div class="meal-type">
+<span class="emoji">☀️</span>
+<span class="label">점심</span>
+</div>
+</div>
+<ul class="meal-items">
+<li>짬뽕순두부찌개</li>
+<li>잡곡밥/백미밥</li>
+<li>생선까스&amp;타르타르</li>
+<li>검정콩자반</li>
+<li>브로콜리숙회</li>
+<li>배추김치</li>
+<li>샐러드&amp;드레싱(2종)</li>
+<li>요구르트</li>
+</ul>
+</article>
+<article class="meal-card dinner" data-date="11.12">
+<div class="meal-card-header">
+<div class="meal-type">
+<span class="emoji">🌙</span>
+<span class="label">저녁</span>
+</div>
+</div>
+<ul class="meal-items">
+<li>닭갈비</li>
+<li>백미밥</li>
+<li>시금치된장국</li>
+<li>볼어묵볶음</li>
+<li>쌈무</li>
+<li>배추김치</li>
+<li>샐러드&amp;드레싱(2종)</li>
+<li>요구르트</li>
+</ul>
+</article>
+</section>
+<section class="day-panel" data-date="11.13">
+<div class="day-panel-header">
+<h2>11.13 목요일</h2>
+<span class="sub">점심 · 저녁 식단</span>
+</div>
+<article class="meal-card lunch" data-date="11.13">
+<div class="meal-card-header">
+<div class="meal-type">
+<span class="emoji">☀️</span>
+<span class="label">점심</span>
+</div>
+</div>
+<ul class="meal-items">
+<li>돈까스&amp;데미S</li>
+<li>잡곡밥/백미밥</li>
+<li>조랭이떡국</li>
+<li>맛살겨자냉채</li>
+<li>마늘종&amp;알마늘지</li>
+<li>배추김치</li>
+<li>샐러드&amp;드레싱(2종)</li>
+<li>요구르트</li>
+</ul>
+</article>
+<article class="meal-card dinner" data-date="11.13">
+<div class="meal-card-header">
+<div class="meal-type">
+<span class="emoji">🌙</span>
+<span class="label">저녁</span>
+</div>
+</div>
+<ul class="meal-items">
+<li>쑥갓유부우동</li>
+<li>백미밥</li>
+<li>야채춘권</li>
+<li>소시지떡조림</li>
+<li>부추양파무침</li>
+<li>배추김치</li>
+<li>샐러드&amp;드레싱(2종)</li>
+<li>요구르트</li>
+</ul>
+</article>
+</section>
+<section class="day-panel" data-date="11.14">
+<div class="day-panel-header">
+<h2>11.14 금요일</h2>
+<span class="sub">점심 · 저녁 식단</span>
+</div>
+<article class="meal-card lunch" data-date="11.14">
+<div class="meal-card-header">
+<div class="meal-type">
+<span class="emoji">☀️</span>
+<span class="label">점심</span>
+</div>
+</div>
+<ul class="meal-items">
+<li>얼큰만두탕</li>
+<li>잡곡밥/백미밥</li>
+<li>한입떡갈비</li>
+<li>미역줄기볶음</li>
+<li>미나리무생채</li>
+<li>깍두기</li>
+<li>샐러드&amp;드레싱(2종)</li>
+<li>요구르트</li>
+</ul>
+</article>
+<article class="meal-card dinner" data-date="11.14">
+<div class="meal-card-header">
+<div class="meal-type">
+<span class="emoji">🌙</span>
+<span class="label">저녁</span>
+</div>
+</div>
+<ul class="meal-items">
+<li>청양풍돈불고기</li>
+<li>백미밥</li>
+<li>미역국</li>
+<li>천사채야채무침</li>
+<li>콩나물무침</li>
+<li>배추김치</li>
+<li>샐러드&amp;드레싱(2종)</li>
+<li>요구르트</li>
+</ul>
+</article>
+</section>
+</div>
+</div>
+<footer>made by 권민관 for Hansae</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    try {
+        const tabs = Array.from(document.querySelectorAll('.day-tab'));
+        const panels = Array.from(document.querySelectorAll('.day-panel'));
+        const summary = document.getElementById('today-summary');
+
+        if (tabs.length === 0 || panels.length === 0) {
+            if (summary) {
+                summary.textContent = '이번 주 식단 정보가 없습니다.';
+            }
+            return;
+        }
+
+        // KST 기준 오늘 날짜 계산 → "MM.DD"
+        const now = new Date();
+        const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+        const kst = new Date(utc + 9 * 3600 * 1000);
+        const month = String(kst.getMonth() + 1).padStart(2, '0');
+        const day = String(kst.getDate()).padStart(2, '0');
+        const todayMD = `${month}.${day}`;
+
+        function setActive(dateStr) {
+            tabs.forEach(tab => {
+                tab.classList.toggle('active', tab.dataset.date === dateStr);
+            });
+            panels.forEach(panel => {
+                panel.classList.toggle('active', panel.dataset.date === dateStr);
+            });
+        }
+
+        // 기본 활성 날짜: 오늘이 있으면 오늘, 없으면 첫 번째
+        let activeDate = null;
+        const todayTab = document.querySelector(`.day-tab[data-date="${todayMD}"]`);
+        if (todayTab) {
+            activeDate = todayMD;
+        } else {
+            activeDate = tabs[0].dataset.date;
+        }
+
+        setActive(activeDate);
+
+        // 오늘 요일 탭 표시 + 안내 문구
+        if (todayTab) {
+            todayTab.classList.add('is-today');
+            if (summary) {
+                summary.textContent = `오늘은 ${month}월 ${day}일입니다. 해당 요일은 빨간색으로 표시되어 있습니다!`;
+            }
+        } else if (summary) {
+            summary.textContent = '오늘 날짜는 이번 주 식단 범위에 없어서, 첫 번째 요일이 기본으로 선택되었습니다.';
+        }
+
+        // 탭 클릭 이벤트
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const dateStr = tab.dataset.date;
+                setActive(dateStr);
+            });
+        });
+    } catch (e) {
+        console.error('Error initializing tabs:', e);
+    }
+});
+</script>
+
+</body></html>
