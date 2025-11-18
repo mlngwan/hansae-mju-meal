@@ -556,7 +556,7 @@ footer {
 
     parts.append("</div>")  # .week-layout
 
-    parts.append('<footer>made by 권민관 for Hansae</footer>')
+    parts.append('<footer>made by 민관 for Hansae</footer>')
 
     # JS: 요일 탭 동작 + 오늘 요일 자동 선택
     parts.append(
@@ -570,7 +570,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (tabs.length === 0 || panels.length === 0) {
             if (summary) {
-                summary.textContent = '이번 주 식단 정보가 없습니다.';
+                summary.textContent = '식단표 제발 빨리 좀;;;';
             }
             return;
         }
@@ -607,10 +607,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (todayTab) {
             todayTab.classList.add('is-today');
             if (summary) {
-                summary.textContent = `오늘은 ${month}월 ${day}일입니다. 해당 요일은 빨간색으로 표시되어 있습니다!`;
+                summary.textContent = `Today : ${month}월 ${day}일 해당 요일은 빨간색으로 표시되어 있습니다!`;
             }
         } else if (summary) {
-            summary.textContent = '오늘 날짜는 이번 주 식단 범위에 없어서, 첫 번째 요일이 기본으로 선택되었습니다.';
+            summary.textContent = '오늘 날짜는 식단표에 없습니다 ㅠㅠ';
         }
 
         // 탭 클릭 이벤트
